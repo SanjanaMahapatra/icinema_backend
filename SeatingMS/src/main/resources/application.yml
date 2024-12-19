@@ -1,0 +1,28 @@
+server:
+  port: 8084
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/i_cinema
+    userName: root
+    password: 
+  jpa: 
+    hibernate.ddl-auto: update
+  application:
+    name: SeatingMS
+  cloud:
+    consul:
+      host: localhost
+      discovery:
+        hostname: localhost
+        
+        
+General: 
+  EXCEPTION_MESSAGE: Something went wrong!
+  
+SeatingService:
+  NO_BOOKED_SEATS_FOUND: No booked seats found!
+  SEAT_NOT_FOUND: No seat found!
+
+SeatingAPI:
+  SUCCESS_BOOKING: Successfully booked all seats!

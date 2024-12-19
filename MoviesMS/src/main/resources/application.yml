@@ -1,0 +1,29 @@
+server:
+  port: 8882
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/i_cinema
+    userName: root
+    password: 
+  jpa: 
+    hibernate.ddl-auto: update
+  application:
+    name: MoviesMS
+  cloud:
+    consul:
+      host: localhost
+      discovery:
+        hostname: localhost
+        
+        
+General: 
+  EXCEPTION_MESSAGE: Something went wrong!
+
+MovieService:
+  MOVIE_NOT_FOUND: No Movie found!
+  MOVIES_NOT_FOUND: No Movies available!
+  UPCOMING_MOVIES_NOT_FOUND: Upcoming movies not found!
+  IMMEDIATE_UPCOMING_MOVIES_NOT_FOUND: 10 most recent upcoming movies not found!
+  SHOWING_MOVIES_NOT_FOUND: Showing movies not found!
+  TOP_RATED_SHOWING_MOVIES_NOT_FOUND: Top rated showing movies not found!

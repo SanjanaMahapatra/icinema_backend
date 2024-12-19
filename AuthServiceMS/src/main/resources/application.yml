@@ -1,0 +1,29 @@
+server:
+  port: 8881
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/i_cinema
+    userName: root
+    password: 
+  jpa: 
+    hibernate.ddl-auto: update
+  application:
+    name: AuthServiceMS
+  cloud:
+    consul:
+      host: localhost
+      discovery:
+        hostname: localhost
+jwt:
+  secret: infyppicinema
+  expiration: 10800000  # 3 hours in milliseconds
+    
+General: 
+  EXCEPTION_MESSAGE: Something went wrong!
+  
+AuthService:
+  USER_CREATED: "User created with id"
+  USER_ALREADY_EXIST: "User with same name already exists"
+  USER_NOT_FOUND: "User not found"
+  AUTHENTICATION_SUCCESSFUL: "Authentication successful"

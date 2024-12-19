@@ -1,0 +1,55 @@
+server:
+  port: 8888
+jwt:
+  secret: infyppicinema
+spring:
+  application:
+    name: GatewayMS
+  cloud:
+    consul:
+      host: localhost
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: AuthServiceMS
+        uri: lb://AuthServiceMS
+        predicates:
+        - Path=/user/**
+      - id: MoviesMS
+        uri: lb://MoviesMS
+        predicates:
+         - Path=/moviesms/**
+      - id: TheatreMS
+        uri: lb://TheatreMS
+        predicates:
+         - Path=/theatrems/**
+      - id: SeatingMS
+        uri: lb://SeatingMS
+        predicates:
+         - Path=/seatingms/**
+      - id: BookingMS
+        uri: lb://BookingMS
+        predicates:
+         - Path=/bookingms/**
+      - id: PaymentMS
+        uri: lb://PaymentMS
+        predicates:
+         - Path=/paymentms/**
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:3000"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders:
+              - Authorization
+              - Cache-Control
+              - Content-Type
+            allowCredentials: true
+      

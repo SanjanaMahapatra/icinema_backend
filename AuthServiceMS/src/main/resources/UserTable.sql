@@ -1,0 +1,12 @@
+CREATE SCHEMA IF NOT EXISTS `i_cinema`;
+USE `i_cinema`;
+
+DROP TABLE IF EXISTS `User`;
+
+CREATE TABLE User (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(10) NOT NULL
+);

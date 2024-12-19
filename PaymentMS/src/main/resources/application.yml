@@ -1,0 +1,37 @@
+server:
+  port: 8886
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/i_cinema
+    userName: root
+    password: 
+  jpa: 
+    hibernate.ddl-auto: update
+  application:
+    name: PaymentMS
+  cloud:
+    consul:
+      host: localhost
+      discovery:
+        hostname: localhost
+
+
+resilience4j.circuitbreaker:
+  instances:
+    paymentservice:
+      failureRateThreshold: 50
+      slidingWindowSize: 4
+      permittedNumberOfCallsInHalfOpenState: 3
+      waitDurationInOpenState: 20s
+      automaticTransitionFromOpenToHalfOpenEnabled: true
+      
+General: 
+  EXCEPTION_MESSAGE: Something went wrong!
+    
+PaymentService:
+  CARD_NOT_FOUND: No Card with given Card Number
+  INSUFFICIENT_BALANCE: Card doesn't have sufficent balance
+  CARD_EXPIRED: Card Expired
+  INVALID_CVV: Invalid Cvv
+  INVALID_EXPIRY: Invalid expiry date

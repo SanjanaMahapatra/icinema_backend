@@ -46,13 +46,15 @@ class MoviesMsApplicationTests {
 		m.setReleaseDate(LocalDate.now());
 		m.setRating(9.8);
 		Mockito.when(movieRepository.findAll()).thenReturn(List.of(m));
-		List<MovieDTO> movieDtoList = movieService.getAllMovies(9.8, "Hindi", List.of("Action"),"Godfather");
+		List<MovieDTO> movieDtoList = new ArrayList<>();
+		movieDtoList = movieService.getAllMovies(9.8, "Hindi", List.of("Action"),
+				"Godfather");
+		Assertions.assertEquals(0, movieDtoList.size());
+
+		movieDtoList = movieService.getAllMovies(null, "Hindi", List.of("Action"), "Godfather");
 		Assertions.assertEquals(1, movieDtoList.size());
 
-		movieDtoList = movieService.getAllMovies(null, "Hindi", List.of("Action"),"Godfather");
-		Assertions.assertEquals(1, movieDtoList.size());
-		
-		movieDtoList = movieService.getAllMovies(null, "Hindi", List.of("Action"),null);
+		movieDtoList = movieService.getAllMovies(null, "Hindi", List.of("Action"), null);
 		Assertions.assertEquals(1, movieDtoList.size());
 
 		Movie m1 = new Movie();
@@ -68,10 +70,9 @@ class MoviesMsApplicationTests {
 		m1.setReleaseDate(LocalDate.now());
 		m1.setRating(9.8);
 
-		movieDtoList = movieService.getAllMovies(9.9, null, List.of("Action"),"Godfather");
+		movieDtoList = movieService.getAllMovies(9.9, null, List.of("Action"), "Godfather");
 		Assertions.assertEquals(0, movieDtoList.size());
 
-		
 		Movie m2 = new Movie();
 		m2.setMovieId(1L);
 		m2.setMovieName("The Godfather");
@@ -84,85 +85,85 @@ class MoviesMsApplicationTests {
 		m2.setLanguages(List.of("hindi"));
 		m2.setReleaseDate(LocalDate.now());
 		m2.setRating(9.8);
-		 
-		 movieDtoList = movieService.getAllMovies(9.9, "hindi", null,"Godfather");
-		 Assertions.assertEquals(0, movieDtoList.size());
-		 
-		 Movie m3 = new Movie();
-		 m3.setMovieId(1L);
-		 m3.setMovieName("The Godfather");
-		 m3.setCensorRating("U");
-		 m3.setAverageRating(9.8);
-		 m3.setDuration(LocalTime.now());
-		 m3.setDescription("The aging patriarch of an organized crime");
-		 m3.setGenres(List.of());
-		 m3.setImageUrl("image.png");
-		 m3.setLanguages(List.of());
-		 m3.setReleaseDate(LocalDate.now());
-		 m3.setRating(9.8);
-		 
-		 movieDtoList = movieService.getAllMovies(null, null, null,null);
-		 Assertions.assertEquals(1, movieDtoList.size());
-		 
-		 Movie m4 = new Movie();
-		 m4.setMovieId(1L);
-		 m4.setMovieName("The Godfather");
-		 m4.setCensorRating("U");
-		 m4.setAverageRating(9.8);
-		 m4.setDuration(LocalTime.now());
-		 m4.setDescription("The aging patriarch of an organized crime");
-		 m4.setGenres(List.of("Action"));
-		 m4.setImageUrl("image.png");
-		 m4.setLanguages(List.of());
-		 m4.setReleaseDate(LocalDate.now());
-		 m4.setRating(9.8);
-		 
-		 movieDtoList = movieService.getAllMovies(null, "hindi", List.of("Action"),null);
-		 Assertions.assertEquals(0, movieDtoList.size());
-		 
-		 Movie m5 = new Movie();
-		 m5.setMovieId(1L);
-		 m5.setMovieName("The Godfather");
-		 m5.setCensorRating("U");
-		 m5.setAverageRating(9.8);
-		 m5.setDuration(LocalTime.now());
-		 m5.setDescription("The aging patriarch of an organized crime");
-		 m5.setGenres(List.of());
-		 m5.setImageUrl("image.png");
-		 m5.setLanguages(List.of("hindi"));
-		 m5.setReleaseDate(LocalDate.now());
-		 m5.setRating(9.8);
-		 
-		 movieDtoList = movieService.getAllMovies(null, "hindi", List.of("Action"),null);
-		 Assertions.assertEquals(0, movieDtoList.size());
-		 
-		 movieDtoList = movieService.getAllMovies(null, null, List.of("Action"),null);
-		 Assertions.assertEquals(1, movieDtoList.size());
-		 
-		 movieDtoList = movieService.getAllMovies(null, "hindi", null,"Godfather");
-		 Assertions.assertEquals(0, movieDtoList.size());
-		 
-		 movieDtoList = movieService.getAllMovies(null, "hindi", null,null);
-		 Assertions.assertEquals(0, movieDtoList.size());
-		 
-		 movieDtoList = movieService.getAllMovies(null, null, null,null);
-		 Assertions.assertEquals(1, movieDtoList.size());
-		 
-		 movieDtoList = movieService.getAllMovies(9.9, null, List.of(),"The");
-		 Assertions.assertEquals(0, movieDtoList.size());
 
-		 movieDtoList = movieService.getAllMovies(9.9, null, List.of("Action", "Crime"),"The");
-		 Assertions.assertEquals(0, movieDtoList.size());
-		 
-		 movieDtoList = movieService.getAllMovies(9.9, "hindi", null,null);
-		 Assertions.assertEquals(0, movieDtoList.size());
-		 
-		 movieDtoList = movieService.getAllMovies(9.9, "hindi", List.of("crime"),null);
-		 Assertions.assertEquals(0, movieDtoList.size());
-		 
-		 movieDtoList = movieService.getAllMovies(null, null, List.of("action"),"xyz");
-		 Assertions.assertEquals(0, movieDtoList.size());
-		 
+		movieDtoList = movieService.getAllMovies(9.9, "hindi", null, "Godfather");
+		Assertions.assertEquals(0, movieDtoList.size());
+
+		Movie m3 = new Movie();
+		m3.setMovieId(1L);
+		m3.setMovieName("The Godfather");
+		m3.setCensorRating("U");
+		m3.setAverageRating(9.8);
+		m3.setDuration(LocalTime.now());
+		m3.setDescription("The aging patriarch of an organized crime");
+		m3.setGenres(List.of());
+		m3.setImageUrl("image.png");
+		m3.setLanguages(List.of());
+		m3.setReleaseDate(LocalDate.now());
+		m3.setRating(9.8);
+
+		movieDtoList = movieService.getAllMovies(null, null, null, null);
+		Assertions.assertEquals(1, movieDtoList.size());
+
+		Movie m4 = new Movie();
+		m4.setMovieId(1L);
+		m4.setMovieName("The Godfather");
+		m4.setCensorRating("U");
+		m4.setAverageRating(9.8);
+		m4.setDuration(LocalTime.now());
+		m4.setDescription("The aging patriarch of an organized crime");
+		m4.setGenres(List.of("Action"));
+		m4.setImageUrl("image.png");
+		m4.setLanguages(List.of());
+		m4.setReleaseDate(LocalDate.now());
+		m4.setRating(9.8);
+
+		movieDtoList = movieService.getAllMovies(null, "hindi", List.of("Action"), null);
+		Assertions.assertEquals(0, movieDtoList.size());
+
+		Movie m5 = new Movie();
+		m5.setMovieId(1L);
+		m5.setMovieName("The Godfather");
+		m5.setCensorRating("U");
+		m5.setAverageRating(9.8);
+		m5.setDuration(LocalTime.now());
+		m5.setDescription("The aging patriarch of an organized crime");
+		m5.setGenres(List.of());
+		m5.setImageUrl("image.png");
+		m5.setLanguages(List.of("hindi"));
+		m5.setReleaseDate(LocalDate.now());
+		m5.setRating(9.8);
+
+		movieDtoList = movieService.getAllMovies(null, "hindi", List.of("Action"), null);
+		Assertions.assertEquals(0, movieDtoList.size());
+
+		movieDtoList = movieService.getAllMovies(null, null, List.of("Action"), null);
+		Assertions.assertEquals(1, movieDtoList.size());
+
+		movieDtoList = movieService.getAllMovies(null, "hindi", null, "Godfather");
+		Assertions.assertEquals(0, movieDtoList.size());
+
+		movieDtoList = movieService.getAllMovies(null, "hindi", null, null);
+		Assertions.assertEquals(0, movieDtoList.size());
+
+		movieDtoList = movieService.getAllMovies(null, null, null, null);
+		Assertions.assertEquals(1, movieDtoList.size());
+
+		movieDtoList = movieService.getAllMovies(9.9, null, List.of(), "The");
+		Assertions.assertEquals(0, movieDtoList.size());
+
+		movieDtoList = movieService.getAllMovies(9.9, null, List.of("Action", "Crime"), "The");
+		Assertions.assertEquals(0, movieDtoList.size());
+
+		movieDtoList = movieService.getAllMovies(9.9, "hindi", null, null);
+		Assertions.assertEquals(0, movieDtoList.size());
+
+		movieDtoList = movieService.getAllMovies(9.9, "hindi", List.of("crime"), null);
+		Assertions.assertEquals(0, movieDtoList.size());
+
+		movieDtoList = movieService.getAllMovies(null, null, List.of("action"), "xyz");
+		Assertions.assertEquals(0, movieDtoList.size());
+
 	}
 
 	@Test
@@ -234,7 +235,7 @@ class MoviesMsApplicationTests {
 		m.setLanguages(List.of("Hindi"));
 		m.setReleaseDate(LocalDate.now());
 		Mockito.when(movieRepository.findByReleaseDateGreaterThan(LocalDate.now())).thenReturn(List.of(m));
-		List<MovieDTO> mDTO = movieService.getUpcomingMovies(LocalDate.now(),"English",List.of("Action","Drama"));
+		List<MovieDTO> mDTO = movieService.getUpcomingMovies(LocalDate.now(), "English", List.of("Action", "Drama"));
 		Assertions.assertEquals(1, mDTO.size());
 	}
 
@@ -243,7 +244,7 @@ class MoviesMsApplicationTests {
 		List<Movie> m = new ArrayList<>();
 		Mockito.when(movieRepository.findByReleaseDateGreaterThan(LocalDate.now())).thenReturn(m);
 		Exception exception = Assertions.assertThrows(MoviesException.class,
-				() -> movieService.getUpcomingMovies(null,"English",List.of("Action","Drama")));
+				() -> movieService.getUpcomingMovies(null, "English", List.of("Action", "Drama")));
 		Assertions.assertEquals("Service.UPCOMING_MOVIES_NOT_FOUND", exception.getMessage());
 
 	}

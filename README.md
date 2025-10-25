@@ -2,4 +2,4 @@
 
 System Design for the existing Icinema Backend application designed
 
-<img width="2718" height="2811" alt="image" src="https://excalidraw.com/#json=uCBr5wI64uStJns90FEkA,qIMazUXBhy5LKJDJHhpFUw" />
+<img width="2718" height="2811" alt="icinemabackend" src="https://github.com/user-attachments/assets/b98fef48-456e-4a31-b95f-78bcabcef587" />

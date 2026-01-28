@@ -3,7 +3,7 @@
 # Stage 1
 
 # Import docker image with maven installed
-FROM maven:3.9.12-eclipse-temurin:21 as builder
+FROM maven:3.9.12-eclipse-temurin-21 as builder
 # Adding the maintainer
 MAINTAINER Sanjana Mahapatra<sanjanamahapatra46206@gmail.com>
 # Setting the workdir

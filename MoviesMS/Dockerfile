@@ -18,7 +18,7 @@ RUN mvn clean install -DskipTests=true
 # Using small size java image
 FROM eclipse-temurin:21-alpine
 # Copy the build from stage 1
-COPY --from=builder /target/Oct24-PP-Bridge-Batch-group4-backend-MovieMS.jar /src/target/moviemsapp.jar
+COPY --from=builder /src/target/*.jar /src/target/moviemsapp.jar
 # Expose the application port
 EXPOSE 8882
 # Start the application
